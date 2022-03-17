@@ -1,0 +1,163 @@
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID
+  shortName: String
+  preferences: AWSJSON
+}
+
+type Region @model @searchable @auth(rules: [{allow: public}]) {
+  id: ID
+  regionID: ID
+
+  region: String
+
+
+  regionNames: [String]
+  countryNames: [String]
+  homeSiteNames: [String]
+  siteNames: [String]
+  crops: [String]
+  experimentNames: [String]
+  harvestTypes: [String]
+  seasons: [String]
+  trialTypes: [String]
+  growingYears: [String]
+
+  PlantedDates: [PlantedDate] @connection(keyName: "byRegion", fields: ["id"], limit: 20000)
+}
+
+type Country @model @searchable @auth(rules: [{allow: public}]) {
+  id: ID
+  regionID: ID
+  countryID: ID
+
+  region: String
+  country: String
+
+  regionNames: [String]
+  countryNames: [String]
+  homeSiteNames: [String]
+  siteNames: [String]
+  crops: [String]
+  experimentNames: [String]
+  harvestTypes: [String]
+  seasons: [String]
+  trialTypes: [String]
+  growingYears: [String]
+
+  PlantedDates: [PlantedDate] @connection(keyName: "byCountry", fields: ["id"], limit: 20000)
+}
+
+type HomeSite @model @searchable @auth(rules: [{allow: public}]) {
+  id: ID
+  regionID: ID
+  countryID: ID
+  homesiteID: ID
+
+  region: String
+  country: String
+  homeSite: String
+
+  regionNames: [String]
+  countryNames: [String]
+  homeSiteNames: [String]
+  siteNames: [String]
+  crops: [String]
+  experimentNames: [String]
+  harvestTypes: [String]
+  seasons: [String]
+  trialTypes: [String]
+  growingYears: [String]
+
+  PlantedDates: [PlantedDate] @connection(keyName: "byHomeSite", fields: ["id"], limit: 20000)
+}
+
+type Site @model @searchable @auth(rules: [{allow: public}]) {
+  id: ID
+  regionID: ID
+  countryID: ID
+  homesiteID: ID
+  siteID: ID
+
+  region: String
+  country: String
+  homeSite: String
+  site: String
+
+  regionNames: [String]
+  countryNames: [String]
+  homeSiteNames: [String]
+  siteNames: [String]
+  crops: [String]
+  experimentNames: [String]
+  harvestTypes: [String]
+  seasons: [String]
+  trialTypes: [String]
+  growingYears: [String]
+
+  PlantedDates: [PlantedDate] @connection(keyName: "bySite", fields: ["id"], limit: 20000)
+}
+
+type PlantedDate  @model @searchable @auth(rules: [{allow: public}]) @key(name: "byRegion", fields: ["regionID"]) @key(name: "byCountry", fields: ["countryID"]) @key(name: "byHomeSite", fields: ["homesiteID"]) @key(name: "bySite", fields: ["siteID"]){
+  id: ID
+  regionID: ID
+  countryID: ID
+  homesiteID: ID
+  siteID: ID
+
+  region: String
+  country: String
+  homeSite: String
+  site: String
+
+  regionNames: [String]
+  countryNames: [String]
+  homeSiteNames: [String]
+  siteNames: [String]
+  crops: [String]
+  experimentNames: [String]
+  harvestTypes: [String]
+  seasons: [String]
+  trialTypes: [String]
+  growingYears: [String]
+
+  plantedDate: String
+  plantedPlot: Int
+  totalPlots: Int
+}
+
+type HarvestProgress @model @searchable @auth(rules: [{allow: public}]) {
+  id: ID
+  compliance: String
+  homeSite: String
+  site: String
+  priority: String
+  harvestWindowStart: String
+  harvestWindowEnd: String
+  plots: Int
+  percentHarvested: Int
+  crop: String
+}
+
+type HarvestProgressPie @model @searchable @auth(rules: [{allow: public}]) {
+  id: ID
+  homeSite: String
+  site: String
+  compliance: String
+  rating: Int
+  plotCount: Int
+  harvestPercentile: Int
+  ratingDescription: String
+  harvestedPlotCount: Int
+  crop: String
+}
+type MachineData @model @searchable @auth(rules: [{allow: public}]) {
+  id: ID
+  combine: String
+  movementDate: String
+  fromStation: String
+  toStation: String
+  drivingDistance: Int
+  compliance: String
+  crop: String
+  acceptedDate: String
+}

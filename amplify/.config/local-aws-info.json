@@ -1,0 +1,15 @@
+{
+  "prod": {
+    "configLevel": "amplifyAdmin"
+  },
+  "dev": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "command-center"
+  },
+  "test": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "command-center"
+  }
+}

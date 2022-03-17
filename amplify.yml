@@ -1,0 +1,42 @@
+version: 1
+
+backend:
+  phases:
+    preBuild:
+      commands:
+      - npm config set strict-ssl false
+      - npm config set registry https://registry.npmjs.org/
+      - npm config set //npm.platforms.engineering/:_authToken $npm_access_token
+      - npm config set @monsantoit:registry https://npm.platforms.engineering
+      - yarn config set strict-ssl false
+    build:
+      commands:
+        - '# Execute Amplify CLI with the helper script'
+        - amplifyPush --simple
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - yarn install
+        - nvm install 14.16.1
+        - nvm use 14.16.1
+        - npm install --silent --global expo-cli
+        - |-
+          if [ -f yarn.lock ]; then
+           yarn
+          elif [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+           npm ci
+          else
+           npm install
+          fi
+    build:
+      commands:
+        - 'npm run-script build'
+  artifacts:
+    baseDirectory: build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - $(npm root --global)/**/*

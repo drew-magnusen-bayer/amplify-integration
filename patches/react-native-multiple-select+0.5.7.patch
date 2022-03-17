@@ -1,0 +1,52 @@
+diff --git a/node_modules/react-native-multiple-select/lib/react-native-multi-select.js b/node_modules/react-native-multiple-select/lib/react-native-multi-select.js
+index 2d97965..a9ef692 100644
+--- a/node_modules/react-native-multiple-select/lib/react-native-multi-select.js
++++ b/node_modules/react-native-multiple-select/lib/react-native-multi-select.js
+@@ -6,8 +6,7 @@ import {
+   TouchableWithoutFeedback,
+   TouchableOpacity,
+   FlatList,
+-  UIManager,
+-  ViewPropTypes
++  UIManager
+ } from 'react-native';
+ import PropTypes from 'prop-types';
+ import reject from 'lodash/reject';
+@@ -40,7 +39,7 @@ export default class MultiSelect extends Component {
+     uniqueKey: PropTypes.string,
+     tagBorderColor: PropTypes.string,
+     tagTextColor: PropTypes.string,
+-    tagContainerStyle: ViewPropTypes.style,
++    // tagContainerStyle: ViewPropTypes.style,
+     fontFamily: PropTypes.string,
+     tagRemoveIconColor: PropTypes.string,
+     onSelectedItemsChange: PropTypes.func.isRequired,
+@@ -54,17 +53,17 @@ export default class MultiSelect extends Component {
+     searchInputPlaceholderText: PropTypes.string,
+     searchInputStyle: PropTypes.object,
+     selectText: PropTypes.string,
+-    styleDropdownMenu: ViewPropTypes.style,
+-    styleDropdownMenuSubsection: ViewPropTypes.style,
+-    styleInputGroup: ViewPropTypes.style,
+-    styleItemsContainer: ViewPropTypes.style,
+-    styleListContainer: ViewPropTypes.style,
+-    styleMainWrapper: ViewPropTypes.style,
+-    styleRowList: ViewPropTypes.style,
+-    styleSelectorContainer: ViewPropTypes.style,
+-    styleTextDropdown: Text.propTypes.style,
+-    styleTextDropdownSelected: Text.propTypes.style,
+-    styleTextTag: Text.propTypes.style,
++    // styleDropdownMenu: ViewPropTypes.style,
++    // styleDropdownMenuSubsection: ViewPropTypes.style,
++    // styleInputGroup: ViewPropTypes.style,
++    // styleItemsContainer: ViewPropTypes.style,
++    // styleListContainer: ViewPropTypes.style,
++    // styleMainWrapper: ViewPropTypes.style,
++    // styleRowList: ViewPropTypes.style,
++    // styleSelectorContainer: ViewPropTypes.style,
++    // styleTextDropdown: Text.propTypes.style,
++    // styleTextDropdownSelected: Text.propTypes.style,
++    // styleTextTag: Text.propTypes.style,
+     altFontFamily: PropTypes.string,
+     hideSubmitButton: PropTypes.bool,
+     hideDropdown: PropTypes.bool,

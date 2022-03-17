@@ -1,0 +1,16 @@
+export const getHighLevelPlantedView = /* GraphQL */ `
+  query GetHighLevelPlantedView($id: ID!, filters: [String]) {
+    getHighLevelPlantedView(id: $id) {
+      id
+      name
+      filters
+      data
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      
+    }
+  }
+`;
