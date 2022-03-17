@@ -1,9 +1,0 @@
-Resources:
-  src:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: util/regionsUtil.createRegionRecord
-      CodeUri: /Users/ehghp/repos/command-center/amplify/backend/function/appdata/src
-      Runtime: nodejs14.x
-      Environment:
-        Variables: {}
